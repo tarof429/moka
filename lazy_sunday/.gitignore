@@ -1,0 +1,3 @@
+.vagrant
+kube_cluster_config.yml
+cluster.rkestate
