@@ -147,6 +147,33 @@ Aftwards, the pods are running.
 18. Now you should be able to the browser and go to `http://blue.ngix.example.com` and `http://green.nginx.example.com`. As before, this will have a problem if you refresh the browser and haproxy tries to do round-robin load balancing to the next node. To solve this, change the deployment for nginx-deploy-blue and nginx-deploy-green and increase the number of replicas to 2. 
 
 
+## Bonus!
+
+Another project located in bonus/hello-python illustrates how we can use nginx ingress to proxy requests to an application that does not use port 80 internally. Just add 
+
+```
+172.28.128.13 hello-python.example.com
+```
+
+to your hosts file. Then,
+
+```
+$ curl http://hello-python.example.com/tree
+Happy tree!
+```
+
+A look at the services:
+
+```
+$ kubectl get svc
+NAME                   TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE
+hello-python-service   ClusterIP   10.43.195.44   <none>        5000/TCP   2m21s
+kubernetes             ClusterIP   10.43.0.1      <none>        443/TCP    29h
+nginx-deploy-blue      ClusterIP   10.43.189.86   <none>        80/TCP     28h
+nginx-deploy-green     ClusterIP   10.43.149.14   <none>        80/TCP     28h
+nginx-deploy-main      ClusterIP   10.43.95.19    <none>        80/TCP     29h
+```
+
 ## References
 
 https://www.youtube.com/watch?v=chwofyGr80c&t=63s

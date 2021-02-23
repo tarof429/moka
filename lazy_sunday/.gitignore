@@ -1,3 +1,5 @@
 .vagrant
-kube_cluster_config.yml
+kube_config_cluster.yml
 cluster.rkestate
+bonus/hello-python/build.sh
+bonus/hello-python/hello-python.tar
