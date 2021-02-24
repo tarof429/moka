@@ -174,6 +174,10 @@ nginx-deploy-green     ClusterIP   10.43.149.14   <none>        80/TCP     28h
 nginx-deploy-main      ClusterIP   10.43.95.19    <none>        80/TCP     29h
 ```
 
+## Upgrading
+
+This cluster was upgraded from 1.0.16 to 1.2.5. This gives me the option to upgrade to newer versions of Kubernetes, and both versions support rancher/hyperkube:v1.17.17-rancher1.
+
 ## References
 
 https://www.youtube.com/watch?v=chwofyGr80c&t=63s
