@@ -1,0 +1,11 @@
+apiVersion: ignite.weave.works/v1alpha3
+kind: Configuration
+metadata:
+  name: test-config
+spec:
+  runtime: docker
+  networkPlugin: cni
+  vmDefaults:
+    memory: 4GB
+    diskSize: 3GB
+    cpus: 4
