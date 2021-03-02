@@ -27,8 +27,10 @@ First let's setup a docker registry with SSL.
 
     ```
     cd centos7-ignite
-    docker build --rm -t 192.168.10.102:5000/centos7-ignite:latest .
+    REV=$(git rev-parse --short HEAD)
+    docker build --rm -t 192.168.10.102:5000/centos7-ignite:latest -t 192.168.10.102:5000/centos7-ignite:${REV} .
     docker push 192.168.10.102:5000/centos7-ignite:latest
+    docker push 192.168.10.102:5000/centos7-ignite:${REV}
     ```
 
 2. Start ignited, if it's not already started.
@@ -48,7 +50,7 @@ First let's setup a docker registry with SSL.
 4. Start kubemaster
 
     ```
-    sudo ignite run 192.168.10.102:5000/centos7-ignite --name kubemaster --ignite-config ignite-config.yaml 
+    sudo ignite run 192.168.10.102:5000/centos7-ignite:${REV} --name kubemaster --ignite-config ignite-config.yaml 
     INFO[0000] Created VM with ID "2807bc2b1c43a020" and name "kubemaster" 
     INFO[0001] Pulling image "weaveworks/ignite:v0.8.0"...  
     INFO[0010] Networking is handled by "cni"               
@@ -58,7 +60,7 @@ First let's setup a docker registry with SSL.
 5. Start kubenode01
 
     ```
-    sudo ignite run 192.168.10.102:5000/centos7-ignite --name kubenode01 --ignite-config ignite-config.yaml 
+    sudo ignite run 192.168.10.102:5000/centos7-ignite:${REV} --name kubenode01 --ignite-config ignite-config.yaml 
     INFO[0000] Created VM with ID "04f7328a8daab6c3" and name "kubenode01" 
     INFO[0001] Networking is handled by "cni"               
     INFO[0001] Started Firecracker VM "04f7328a8daab6c3" in a container with ID "fe0bc5227ae26b4547aa762ba7e6ca04deeedfac5ba27601c4e910dcaed0ce5d" 

@@ -7,6 +7,7 @@ Docker image for Ignite
 First, you must build a docker image and push it to docker regitry. 
 
 ```
+REV=$(git rev-parse --short HEAD)
 docker build --rm -t tarof429/centos7-ignite .
 docker push tarof429/centos7-ignite
 ```
