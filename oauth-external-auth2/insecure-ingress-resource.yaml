@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: insecure-ingress-resource
+spec:
+  rules:
+  - host: insecure.example.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx-deploy-main
+          servicePort: 80
