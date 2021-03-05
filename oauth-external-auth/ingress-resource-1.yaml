@@ -4,7 +4,7 @@ metadata:
   name: ingress-resource-1
 spec:
   rules:
-  - host: nginx.example.com
+  - host: insecure.example.com
     http:
       paths:
       - path: /
