@@ -23,7 +23,7 @@ spec:
         volumeMounts:
         - name: webdata
           mountPath: "/webdata"
-        command: ["/bin/sh", "-c", 'echo "<h1>Secure website</h1><body>I am secure</body>" > /webdata/index.html']
+        command: ["/bin/sh", "-c", 'echo "<h1>My website</h1><body>You have accessed my website</body>" > /webdata/index.html']
       containers:
       - image: nginx
         name: nginx
