@@ -1,6 +1,6 @@
-# oauth-external-auth
+# basic-auth
 
-Oauth authentication with github
+Basic authentication example
 
 ## Preparation
 
@@ -8,6 +8,12 @@ Oauth authentication with github
 
 ```
 vagrant up
+```
+
+2. Bring up the cluster.
+
+```
+rke up
 ```
 
 2. Login to each VM and set dockerhub credentials.
@@ -30,7 +36,7 @@ secret "admin-auth" created
 ```
 
 ```
-[taro@zaxman oauth-external-auth]$ kubectl get secret admin-auth -o yaml
+$ kubectl get secret admin-auth -o yaml
 apiVersion: v1
 data:
   auth: YWRtaW46JGFwcjEkUHlMMERIbEQkRTJUSEVaYUU3a0xLNmQubzhIWFhCMAo=
@@ -45,16 +51,33 @@ metadata:
 type: Opaque
 ```
 
-## Deploying external-oauth-resource
+Deploy `nginx-deploy-main.yaml`
 
+```
+kubectl apply -f nginx-deploy-main.yaml
+```
 
+Deploy `insecure-ingress-resource.yaml`
 
-https://kubernetes.github.io/ingress-nginx/examples/auth/basic/
+```
+kubectl apply -f insecure-ingress-resource.yaml
+```
 
-## Ingress resources
+Test
 
-- insecure-ingress-resource.yaml demonstrates how to expose a service without any security
+```
+w3m http://insecure.example.com
+```
 
-- 
+Then deploy `basic-auth-ingress-resource.yaml`
 
-60a9f99a74e0cd6946ed5792988fcfc3a5bc0bdd client secret
+```
+kubectl delete -f insecure-ingress-resource.yaml
+kubectl apply -f basic-auth-ingress-resource.yaml
+```
+
+Test
+
+```
+w3m http://basic-auth.example.com
+```

@@ -43,7 +43,7 @@ First let's setup a docker registry with SSL.
 3. Import the image, making sure you specify `docker` as the runtime (using containerd appears to be possible, but this may be left as an exercise. See https://github.com/containerd/containerd/issues/3847)
 
     ```
-    sudo ignite image import 192.168.10.102:5000/centos7-ignite:latest --runtime docker
+    sudo ignite image import 192.168.10.102:5000/centos7-ignite:${REV} --runtime docker
     INFO[0000] Created image with ID "4c29beaec7daa08f" and name "192.168.10.102:5000/centos7-ignite:latest" 
     ```
 
