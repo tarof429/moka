@@ -3,13 +3,13 @@
   "Description": "Basic Auth example",
   "CmdList": [
       {
-      "Description": "List files",
+      "Description": "Start VMs",
       "Commands": [
         {
           "name": "vagrant",
-          "args": ["ssh", "kubemaster", "-c", "\"ls -F /usr\""],
+          "args": ["up"],
           "workingDirectory": ".",
-          "description": "Shutdown the cluster",
+          "description": "Bring up the VMs",
           "type": "execute"
         }
       ]

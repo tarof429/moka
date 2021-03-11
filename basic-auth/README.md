@@ -4,19 +4,22 @@ Basic authentication example
 
 ## Preparation
 
-1. Bring up the VMs
+This project uses `https://github.com/tarof429/aruku` to help with provisioning of the nodes.
 
-```
-vagrant up
-```
+1. Clone `https://github.com/tarof429/aruku` and run `make && go install`. This will install `aruku` in $GOPATH/bin.
 
-2. Bring up the cluster.
+2. Start aruku
 
-```
-rke up
-```
+  ```
+  aruku load .
+  ```
 
-2. Login to each VM and set dockerhub credentials.
+1. Bring up the VM sby selecting `Start VMs` in the aruku menu.
+
+2. If this is the first time, select `Login to hub.docker.com`.
+
+3. Then select `Bring up the cluster`.
+
 
 ## Deploying basic-auth-ingress-resource
 
@@ -81,3 +84,7 @@ Test
 ```
 w3m http://basic-auth.example.com
 ```
+
+## Shutting down the cluster
+
+Run `aruku` and select `Shutdown the cluster`.
