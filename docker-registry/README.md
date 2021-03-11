@@ -1,8 +1,8 @@
-# Getting Ready for Spring
+# Docker registry
 
 ## Introduction
 
-In `lazy_sunday`, our deployments took an existing nginx images and modified the command line to produce different behaviors. In this example, we will create a docker image, push that to a docker registry which we will set up, and create a deployment that uses those images. This example is based on the video in the link below. The yamls we use are from https://github.com/justmeandopensource/docker.
+In  this example, our deployments took an existing nginx images and modified the command line to produce different behaviors. In this example, we will create a docker image, push that to a docker registry which we will set up, and create a deployment that uses those images. This example is based on the video in the link below. The yamls we use are from https://github.com/justmeandopensource/docker.
 
 ## Start a basic docker registry
 
