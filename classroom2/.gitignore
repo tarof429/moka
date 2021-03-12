@@ -1,6 +1,0 @@
-.vagrant
-cluster.rkestate
-kube_config_cluster.yml
-certs
-kubemaster
-k8s
