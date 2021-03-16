@@ -20,7 +20,7 @@ In  this example, our deployments took an existing nginx images and modified the
     docker push localhost:5000/hello-python:latest
     ```
 
-This should work. Pusing docker images to a docker registry on the same machine is easy.
+This should work. Pushing docker images to a docker registry on the same machine is easy.
 
 3. Let's confirm by sending a request to the registry.
 
