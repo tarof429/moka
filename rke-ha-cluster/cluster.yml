@@ -11,7 +11,7 @@ nodes:
   user: rke
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: .vagrant/machines/kubemaster01/virtualbox/private_key
+  ssh_key_path: ~/.ssh/id_rsa
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}
@@ -26,7 +26,7 @@ nodes:
   user: rke
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: .vagrant/machines/kubemaster02/virtualbox/private_key
+  ssh_key_path: ~/.ssh/id_rsa
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}
@@ -37,11 +37,11 @@ nodes:
   role:
   - controlplane
   - etcd
-  hostname_override: kubemaster02
+  hostname_override: kubemaster03
   user: rke
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: .vagrant/machines/kubemaster03/virtualbox/private_key
+  ssh_key_path: ~/.ssh/id_rsa
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}
@@ -55,7 +55,7 @@ nodes:
   user: rke
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: .vagrant/machines/kubenode01/virtualbox/private_key
+  ssh_key_path: ~/.ssh/id_rsa
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}
@@ -69,7 +69,7 @@ nodes:
   user: rke
   docker_socket: /var/run/docker.sock
   ssh_key: ""
-  ssh_key_path: .vagrant/machines/kubenode02/virtualbox/private_key
+  ssh_key_path: ~/.ssh/id_rsa
   ssh_cert: ""
   ssh_cert_path: ""
   labels: {}
