@@ -1,0 +1,30 @@
+---
+- name: Create rke user with passwordless sudo
+  hosts: rke_hosts
+  tasks:
+    - name: Add RKE admin user
+      user:
+        name: rke
+        shell: /bin/bash
+        password: secret
+      become: yes
+   
+    - name: Create sudo file
+      file:
+        path: /etc/sudoers.d/rke
+        state: touch
+      become: yes
+
+    - name: Give rke user passwordless sudo
+      lineinfile:
+        path: /etc/sudoers.d/rke
+        state: present
+        line: 'rke ALL=(ALL:ALL) NOPASSWD: ALL'
+      become: yes
+
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: rke
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+      become: yes

@@ -1,0 +1,118 @@
+{
+  "Author": "Taro Fukunaga",
+  "Description": "RKE HA Cluster Management",
+  "CmdList": [
+      {
+      "Description": "Start VMs (cluster will not be started)",
+      "Commands": [
+        {
+          "name": "vagrant",
+          "args": ["up"],
+          "workingDirectory": ".",
+          "description": "Bring up the VMs",
+          "type": "execute"
+        }
+      ]
+    },
+    {
+      "Description": "Show VM status",
+      "Commands": [
+        {
+          "name": "vagrant",
+          "args": ["status"],
+          "workingDirectory": ".",
+          "description": "Show VM status",
+          "type": "execute"
+        }
+      ]
+    },
+    {
+      "Description": "Bring up the cluster (cluster will be started)",
+      "Commands": [
+        {
+          "name": "vagrant",
+          "args": ["up"],
+          "workingDirectory": ".",
+          "description": "Bring up the VMs",
+          "type": "execute"
+        },
+        {
+          "name": "rke",
+          "args": ["up"],
+          "workingDirectory": ".",
+          "description": "Run rke up",
+          "type": "execute"
+        }
+      ]
+    },
+    {
+      "Description": "Login to hub.docker.com",
+      "Commands": [
+        {
+          "name": "docker username",
+          "args": null,
+          "workingDirectory": "",
+          "description": "Enter docker username",
+          "type": "read",
+          "variable": "DOCKER_USERNAME"
+        },
+        {
+          "name": "docker password",
+          "args": null,
+          "workingDirectory": "",
+          "description": "Enter docker password",
+          "type": "read",
+          "variable": "DOCKER_PASSWORD"
+        },
+        {
+          "name": "sh",
+          "args": ["./docker_login.sh", "kubemaster01", "172.28.128.10", "$DOCKER_USERNAME", "$DOCKER_PASSWORD"],
+          "workingDirectory": ".",
+          "description": "Login to dockerhub for kubemaster01",
+          "type": "execute"
+        },
+        {
+          "name": "sh",
+          "args": ["./docker_login.sh", "kubemaster02", "172.28.128.11", "$DOCKER_USERNAME", "$DOCKER_PASSWORD"],
+          "workingDirectory": ".",
+          "description": "Login to dockerhub for kubemaster02",
+          "type": "execute"
+        },
+        {
+          "name": "sh",
+          "args": ["./docker_login.sh", "kubemaster03", "172.28.128.12", "$DOCKER_USERNAME", "$DOCKER_PASSWORD"],
+          "workingDirectory": ".",
+          "description": "Login to dockerhub for kubemaster03",
+          "type": "execute"
+        },
+        {
+          "name": "sh",
+          "args": ["./docker_login.sh", "kubenode01", "172.28.128.13", "$DOCKER_USERNAME", "$DOCKER_PASSWORD"],
+          "workingDirectory": ".",
+          "description": "Login to dockerhub for kubenode01",
+          "type": "execute"
+        },
+        {
+          "name": "sh",
+          "args": ["./docker_login.sh", "kubenode02", "172.28.128.14", "$DOCKER_USERNAME", "$DOCKER_PASSWORD"],
+          "workingDirectory": ".",
+          "description": "Login to dockerhub for kubenode02",
+          "type": "execute"
+        }
+      ]
+
+    },
+    {
+      "Description": "Shutdown the cluster",
+      "Commands": [
+        {
+          "name": "vagrant",
+          "args": ["halt"],
+          "workingDirectory": ".",
+          "description": "Shutdown the cluster",
+          "type": "execute"
+        }
+      ]
+    }
+  ]
+}

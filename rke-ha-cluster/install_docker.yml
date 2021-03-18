@@ -1,0 +1,12 @@
+---
+- name: Install docker
+  hosts: rke_hosts
+  tasks:
+    - name: Install docker
+      shell: |
+        curl https://releases.rancher.com/install-docker/19.03.sh | sh
+        systemctl enable docker
+        systemctl start docker
+        usermod -aG docker rke
+        usermod -aG docker vagrant
+      become: yes

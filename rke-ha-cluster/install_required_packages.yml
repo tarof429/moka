@@ -1,0 +1,12 @@
+---
+- name: Install required packages
+  hosts: rke_hosts
+  tasks:
+    - name: Install required packages
+      yum:
+        name:
+        - vim
+        - wget
+        - curl
+        state: present
+      become: yes
